@@ -1,0 +1,33 @@
+# == Schema Information
+#
+# Table name: ecpm_records
+#
+#  id                   :integer          not null, primary key
+#  transaction_count    :integer
+#  transaction_category :string(255)
+#  ecpm_value           :float(24)
+#  ecpm_min             :float(24)
+#  ecpm_max             :float(24)
+#  select_ecpm_value    :float(24)
+#  transaction_date     :date
+#  created_at           :datetime         not null
+#  updated_at           :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  transaction_count: 1
+  transaction_category: MyString
+  transaction_date: 2017-04-22 11:43:33
+  ecpm_value: 1.5
+  ecpm_min: 1.5
+  ecpm_max: 1.5
+
+two:
+  transaction_count: 1
+  transaction_category: MyString
+  transaction_date: 2017-04-22 11:43:33
+  ecpm_value: 1.5
+  ecpm_min: 1.5
+  ecpm_max: 1.5

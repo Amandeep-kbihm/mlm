@@ -1,0 +1,40 @@
+<!-- Navigation area starts -->
+<div class="menu-area navbar-fixed-top">
+  <div class="container">
+    <div class="row">
+
+      <!-- Navigation starts -->
+      <div class="col-md-12">
+        <div class="mainmenu">
+          <div class="navbar navbar-nobg">
+            <div class="navbar-header">
+              <%= link_to root_path, class: 'navbar-brand' do %>
+              <%=image_tag(asset_path('EWL-Small.png')) %>
+              <% end %>
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+            </div>
+
+            <div class="navbar-collapse collapse">
+              <nav>
+                <ul class="nav navbar-nav navbar-right">
+                  <li class="<%= action_name == 'index' ? 'active' : ''%>"><a class="" href="<%= root_path %>">Home</a></li>
+                  <li><%= link_to 'Download', 'https://play.google.com/store/apps/details?id=com.eearn', target: '_blank' %></li>
+                  <li class="<%= action_name == 'term' ? 'active' : ''%>"><%= link_to 'Term', terms_path %></li>
+
+                </ul>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- Navigation ends -->
+
+    </div>
+  </div>
+</div>
+<!-- Navigation area ends -->

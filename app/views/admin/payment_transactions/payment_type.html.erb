@@ -1,0 +1,43 @@
+<%
+  @heading = "#{PaymentTransaction::PAYMENT_TYPE_REVERSE[params[:type].to_i]}"
+  @sub_heading = "#{PaymentTransaction::PAYMENT_TYPE_REVERSE[params[:type].to_i]} payment transaction date wise Group - Status(#{PaymentTransaction::STATUS_REVERSE[params[:status].to_i]})"
+  content_for :content do %>
+    <% if ! @payment_transactions.blank? %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>S.no</th>
+            <th>Date</th>
+            <th>Total Payment Transactions</th>
+            <th>Payment Transaction Status</th>
+            <th>Total Payment</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @payment_transactions.each_with_index do |payment, index| %>
+              <tr>
+                <td><%= index = index + 1 %></td>
+                <td><%= payment.date %></td>
+                <td><%= payment.count %></td>
+                <td><%= PaymentTransaction::STATUS_REVERSE[params[:status].to_i] %></td>
+                <td><%= payment.amount %></td>
+                <td>
+                  <%= link_to 'Show',admin_show_all_payment_type_path(date:payment.date, type:params[:type], status:params[:status]), class: 'btn btn-primary' %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <div class="client-pagination-setting">
+          <div class="post-text">
+            <%= will_paginate(@payment_transactions) %>
+          </div>
+        </div>
+
+    <% else %>
+        No Payment Transactions available
+    <% end %>
+<% end %>
+<%= render 'partials/basic_content' %>

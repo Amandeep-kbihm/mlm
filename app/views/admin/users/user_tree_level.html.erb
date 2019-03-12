@@ -1,0 +1,51 @@
+<% @heading = "Level #{@level}" %>
+<% content_for :content do %>
+    <table class="table">
+      <thead>
+      <tr>
+        <h3>Refer Details </h3>
+      </tr>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile No</th>
+        <th>Balance</th>
+        <th>DOB</th>
+        <th>Refer ID</th>
+        <th>Sponsor ID</th>
+        <th>Real Sponsor ID</th>
+        <th>Address</th>
+        <th>Chain Count</th>
+        <th>Create Account</th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @users.each do |user_id| %>
+          <% User.where(id: user_id).each do |user| %>
+              <tr>
+                <td><%= user.id %></td>
+                <td><%= user.name %></td>
+                <td><%= user.email %></td>
+                <td><%= user.mobile_number %></td>
+                <td><%= user.wallet.balance %></td>
+                <td><%= user.dob %></td>
+                <td><%= user.refer_id %></td>
+                <td><%= user.sponsor_id %></td>
+                <td><%= user.real_sponsor_id %></td>
+                <td><%= user.address %></td>
+                <td><%= user.chain_count %></td>
+                <td><%= user.created_at.strftime('%d %b, %Y') %></td>
+              </tr>
+          <% end %>
+      <% end %>
+
+      </tbody>
+    </table>
+    <div class="client-pagination-setting">
+      <div class="post-text">
+        <%= will_paginate(@users) %>
+      </div>
+    </div>
+<% end %>
+<%= render 'partials/basic_content' %>

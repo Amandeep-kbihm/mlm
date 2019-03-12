@@ -1,0 +1,43 @@
+<%
+  @heading = 'Offer Detail'
+  @sub_heading = @offer.name.titleize
+  @link_only = raw "#{link_to 'Edit', admin_edit_offer_path(@offer), class: 'btn btn-warning', style: 'float: right'}, #{link_to 'Delete', admin_offer_path(@offer), class: 'btn btn-danger', style: 'float: right', method: :delete, data: { confirm: 'Are you sure?' }}}"
+  content_for :content do %>
+  <% if !@offer.blank? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Company ID</th>
+        <th>Downloaded</th>
+        <th>Link</th>
+        <th>Logo</th>
+        <th>Name</th>
+        <th>Instructions</th>
+        <th>Active</th>
+        <th>Amount</th>
+        <th>Cap</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @offer.id %></td>
+        <td><%= @offer.company_id %></td>
+        <td><%= @offer.downloaded %></td>
+        <td><%= @offer.link %></td>
+        <td><%= image_tag @offer.logo, height: 100, width: 100 %></td>
+        <td><%= @offer.name %></td>
+        <td><%= @offer.instructions %></td>
+        <td><%= @offer.active %></td>
+        <td><%= @offer.amount %></td>
+        <td><%= @offer.cap %></td>
+      </tr>
+
+      </tbody>
+    </table>
+  <% else %>
+    No data available
+  <% end %>
+
+<% end %>
+<%= render 'partials/basic_content' %>

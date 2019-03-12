@@ -1,0 +1,9 @@
+<% if @status == 0 %>
+$("#button2_<%= @user.id %>").replaceWith("<a id='button2_<%= @user.id %>' class='btn btn-block btn-warning' href='/admin/users/<%= @user.id %>' data-remote='true' data-method='patch'>Activate</a>");
+<% elsif @status == 1 %>
+$("#button2_<%= @user.id %>").replaceWith("<a id='button2_<%= @user.id %>' class='btn btn-block btn-warning' href='/admin/users/<%= @user.id %>' data-remote='true' data-method='patch'>Deactivate</a>");
+<% elsif @status == 2 %>
+alert('Error, please try again');
+<% else %>
+alert('User not found');
+<% end %>

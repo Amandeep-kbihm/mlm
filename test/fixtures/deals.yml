@@ -1,0 +1,42 @@
+# == Schema Information
+#
+# Table name: deals
+#
+#  id           :integer          not null, primary key
+#  company_id   :integer
+#  downloaded   :integer          default(0)
+#  link         :string(255)
+#  logo         :string(255)
+#  name         :string(255)
+#  instructions :text(65535)
+#  active       :boolean          default(FALSE)
+#  amount       :decimal(10, 4)
+#  cap          :integer
+#  created_at   :datetime         not null
+#  updated_at   :datetime         not null
+#  reward_later :boolean          default(FALSE)
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  company_id: 1
+  downloaded: 1
+  link: MyString
+  logo: MyString
+  name: MyString
+  instructions: MyText
+  active: false
+  amount: 9.99
+  cap: 1
+
+two:
+  company_id: 1
+  downloaded: 1
+  link: MyString
+  logo: MyString
+  name: MyString
+  instructions: MyText
+  active: false
+  amount: 9.99
+  cap: 1

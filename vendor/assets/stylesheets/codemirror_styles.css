@@ -1,0 +1,153 @@
+html, .CodeMirror, .CodeMirror-scroll
+{
+    height: 100%;
+}
+
+body.black .CodeMirror {
+    line-height: 1.40em;
+    color: #E6E1DC;
+    background-color: #202020;
+    -webkit-box-shadow: inset 0 0 10px black;
+    -moz-box-shadow: inset 0 0 10px black;
+    box-shadow: inset 0 0 10px black;
+}
+body.black .CodeMirror-gutters {
+    background: #3D3D3D;
+    border-right: 1px solid #4D4D4D;
+    box-shadow: 0 10px 20px black;
+}
+
+body.one .CodeMirror {
+    line-height: 1;
+}
+body.one .CodeMirror-gutters {
+    line-height: 1;
+}
+
+body.one-five .CodeMirror {
+    line-height: 1.5;
+}
+
+body.one-five .CodeMirror-gutters {
+    line-height: 1.5;
+}
+
+body.two .CodeMirror {
+    line-height: 2;
+}
+
+body.two .CodeMirror-gutters {
+    line-height: 2;
+}
+
+body.font-twelve .CodeMirror {
+    font-size: 12px;
+}
+
+body.font-twelve .CodeMirror-gutters {
+    font-size: 12px;
+}
+
+body.font-thirteen .CodeMirror {
+    font-size: 13px;
+}
+
+body.font-thirteen .CodeMirror-gutters {
+    font-size: 13px;
+}
+
+body.font-fourteen .CodeMirror {
+    font-size: 14px;
+}
+
+body.font-fourteen .CodeMirror-gutters {
+    font-size: 14px;
+}
+
+body.font-fifteen .CodeMirror {
+    font-size: 15px;
+}
+
+body.font-fifteen .CodeMirror-gutters {
+    font-size: 15px;
+}
+
+body.font-sixteen .CodeMirror {
+    font-size: 16px;
+}
+
+body.font-sixteen .CodeMirror-gutters {
+    font-size: 16px;
+}
+
+body.font-seventeen .CodeMirror {
+    font-size: 17px;
+}
+
+body.font-seventeen .CodeMirror-gutters {
+    font-size: 17px;
+}
+
+body.font-eighteen .CodeMirror {
+    font-size: 18px;
+}
+
+body.font-eighteen .CodeMirror-gutters {
+    font-size: 18px;
+}
+
+body.font-nineteen .CodeMirror {
+    font-size: 19px;
+}
+
+body.font-nineteen .CodeMirror-gutters {
+    font-size: 19px;
+}
+
+body.font-twenty .CodeMirror {
+    font-size: 20px;
+}
+
+body.font-twenty .CodeMirror-gutters {
+    font-size: 20px;
+}
+
+body.lato .CodeMirror {
+    font-family: Lato;
+}
+
+body.montserrat .CodeMirror {
+    font-family: Montserrat;
+}
+
+body.varela-round .CodeMirror {
+    font-family: "Verala Round";
+}
+
+body.glegoo .CodeMirror {
+    font-family: Glegoo;
+}
+
+body.inconsolata .CodeMirror {
+    font-family: Inconsolata;
+}
+
+body.noticia-text .CodeMirror {
+    font-family: "Noticia Text";
+}
+
+body.eb-garamond .CodeMirror {
+    font-family: "Eb Garamond";
+}
+
+body.roboto .CodeMirror {
+    font-family: Roboto;
+}
+
+body.open-sans .CodeMirror {
+    font-family: "Open Sans";
+}
+
+body.muli .CodeMirror {
+    font-family: Muli;
+}

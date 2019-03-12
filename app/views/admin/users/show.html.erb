@@ -1,0 +1,47 @@
+<%
+  @heading = 'User Detail'
+  @link_only = "#{link_to('Show Earning', admin_user_earnings_path(@user), class: 'btn btn-primary', style: 'float: right')} #{link_to('Deduct', admin_deduct_transaction_path(@user), class: 'btn btn-danger', style: 'float: right')} #{link_to('Refund', admin_refund_transaction_path(@user), class: 'btn btn-danger', style: 'float: right')} #{link_to('Show Transactions', admin_show_transactions_path(@user), class: 'btn btn-primary', style: 'float: right')} #{link_to('Edit', admin_edit_user_path(@user), class: 'btn btn-warning', style: 'float: right')} #{link_to('Back', admin_user_details_path, class: 'btn btn-info', style: 'float: right')} #{link_to('Reset Device', admin_reset_user_device_path(@user), method: :post, class: 'btn btn-warning', style: 'float: right')}".html_safe
+  @sub_heading = @user.name.titleize
+  content_for :content do %>
+  <% if ! @user.blank? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Name</th>
+        <th>Email</th>
+        <th>Mobile No</th>
+        <th>DOB</th>
+        <th>Sponsor ID</th>
+        <th>Real Sponsor ID</th>
+        <th>Refer ID</th>
+        <th>Address</th>
+        <th>Chain Count</th>
+        <th>Create Account</th>
+
+      </tr>
+      </thead>
+      <tbody>
+
+      <tr>
+        <td><%= @user.id %></td>
+        <td><%= @user.name %></td>
+        <td><%= @user.email %></td>
+        <td><%= @user.mobile_number %></td>
+        <td><%= @user.dob %></td>
+        <td><%= @user.sponsor_id %></td>
+        <td><%= @user.real_sponsor_id %></td>
+        <td><%= @user.refer_id %></td>
+        <td><%= @user.address %></td>
+        <td><%= @user.chain_count %></td>
+        <td><%= @user.created_at.strftime('%d %b, %Y') %></td>
+      </tr>
+
+      </tbody>
+    </table>
+  <% else %>
+    No users available
+  <% end %>
+
+<% end %>
+<%= render 'partials/basic_content' %>

@@ -1,0 +1,160 @@
+.tsocial a:hover{
+	color: #EDBF3D;
+}
+.mainmenu .navbar-nav li.active a{
+	color: #EDBF3D;
+}
+.btn.btn-trnsp:hover{
+	background-color: #EDBF3D!important;
+	color: #000000;
+}
+.section-title h2 span{
+	color: #EDBF3D;
+}
+.section-title h2::before{
+	background-color: #EDBF3D;
+}
+.second-title h2{
+	padding-bottom: 23px;
+	margin: 0px;
+}
+.serv-block{
+	background: #fff none repeat scroll 0 0;
+	border-radius: 5px;
+	box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+	margin-bottom: 30px;
+	padding: 40px 20px;
+	position: relative;
+	text-align: center;
+	transition: all 0.2s ease-out 0s;
+	width: 100%;
+}
+.serv-block:hover{
+	box-shadow: 2px 2px 20px rgba(104, 104, 104, 0.2);
+}
+.border-yellow{
+	border-top: 3px solid #EDBF3D;
+}
+.border-black{
+	border-top: 3px solid #000000;
+}
+.serv-block img{
+	display: inline-block;
+	margin-bottom: 18px;
+	float: none;
+	position: relative;
+}
+.paytm{
+	margin-bottom: 48px !important;
+}
+.serv-block h6{
+	font-size: 18px;
+}
+.font-13{
+	font-size: 13px;
+	line-height: 24px;
+	padding-bottom: 23px;
+	margin: 0px;
+}
+.subtitle{
+	font-size: 18px;
+	text-transform: none;
+}
+.member-hover{
+	background-color: #EDBF3D;
+	color: #000000;
+	overflow: hidden;
+	padding: 0px 4px;
+}
+.member-hover h3, .member-hover .text-muted, .member-hover i.fa{
+	color: #000000;
+	font-size: 15px;
+}
+
+.fun-fact i.fa::after{
+	background-color: #EDBF3D;
+}
+.home-services .service-box i.fa{
+	color: #EDBF3D;
+}
+.filters li.active{
+	color: #EDBF3D;
+}
+.button-1{
+	border: 1px solid #000000;
+	color: #000000;
+	display: inline-block;
+	font-size: 12px;
+	text-transform: uppercase;
+	padding: 12px 15px;
+	font-weight: bold;
+}
+.a:hover{
+	color: #000000;
+	background-color: #EDBF3D;
+}
+.single-testimonial i.fa, .single-testimonial h4{
+	color: #EDBF3D;
+}
+.subscribe-box h2 span{
+	color: #EDBF3D;
+}
+.newsletter-form .mc-submit{
+	background-color: #EDBF3D;
+	color: #000000;
+}
+.contact-info i.fa{
+	color: #EDBF3D;
+}
+.contact-info i.fa::after{
+	background-color: #EDBF3D;
+}
+.btn, input[type="submit"] {
+	background-color: #EDBF3D;
+	color: #000000;
+}
+.copyright-text{
+	background-color: #EDBF3D;
+	color: #000000;
+}
+.video-content i.fa{
+	background-color: #EDBF3D;
+	color: #000000;
+}
+.footer-area{
+	background-color: #ffffff;
+	color: #000000;
+}
+.social-links li a i{
+	color: #000000;
+}
+.social-links li a:hover i{
+	color: #EDBF3D;
+}
+.feature_icon_6{
+	padding-bottom: 23px;
+}
+.join-us-1, .join-us-2{
+    max-width: 45%;
+}
+.join-us-3{
+    max-width: 44.8%;
+}
+
+/*TERM*/
+.term{
+    margin-top: 100px;
+	padding-top: 40px;
+	padding-bottom: 40px;
+}
+.term h2{
+
+	margin-bottom: 50px;
+}
+.term li{
+	margin-left: 28px;
+	padding-left: 5px;
+}
+.term span{
+	color: #44a0cf;
+}

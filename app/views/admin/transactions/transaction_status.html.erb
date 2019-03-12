@@ -1,0 +1,48 @@
+<%
+  @heading = "#{Transaction::CATEGORY_REVERSE[params[:category].to_i]}"
+  @sub_heading = "#{Transaction::CATEGORY_REVERSE[params[:category].to_i]} transaction date wise Group  - Status(#{Transaction::STATUS_REVERSE[params[:status].to_i]})"
+  content_for :content do %>
+
+    <% if !@transactions_own.blank? && !@transactions_upline.blank? %>
+
+        <table class="table">
+          <thead>
+          <tr>
+            <th>S. No.</th>
+            <th>Date</th>
+            <th>Total Transactions</th>
+            <th>Transaction Status</th>
+            <th>Total Amount</th>
+            <th>Actions</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @transactions_own.each_with_index do |transaction, index| %>
+              <tr>
+              <td><%= index + 1 %></td>
+              <td><%= transaction.date %></td>
+              <td>O: <%= transaction.count %>, U: <%= @transactions_upline[index].count %></td>
+              <td><%= Transaction::STATUS_REVERSE[params[:status].to_i]%></td>
+              <td>O: <%= transaction.amount %>, U: <%= @transactions_upline[index].amount %></td>
+              <td >
+                <%= link_to 'Show', admin_show_record_path(category:params[:category],status: params[:status], date: transaction.date), class: 'btn btn-primary' %>
+                <% if params[:status].to_i == 2 %>
+                    <%= link_to 'SET-ECPM', admin_ecpm_form_path(category:params[:category], count: transaction.count, status: params[:status], date: transaction.date), class: 'btn btn-info' %>
+                <% end %>
+              </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+
+        <div class="client-pagination-setting">
+          <div class="post-text">
+            <%= will_paginate(@transactions_own) %>
+          </div>
+        </div>
+
+    <% else %>
+        No Transactions available
+    <% end %>
+<% end %>
+<%= render 'partials/basic_content' %>

@@ -1,0 +1,51 @@
+<%
+  @heading = 'ECPM'
+  @sub_heading = 'All ECPM Detail'
+  content_for :content do %>
+    <% if ! @ecpms.blank? %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>S.no</th>
+            <th>ID</th>
+            <th>Total Transaction</th>
+            <th>Select ECPM Price</th>
+            <th>Total Amount</th>
+            <th>Transaction Category</th>
+            <th>Transaction Date</th>
+            <th>Ecpm Value</th>
+            <th>Ecpm Minimum</th>
+            <th>Ecpm Maximum</th>
+            <th>Created at</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @ecpms.each_with_index do |ecpm, index| %>
+              <tr>
+                <td><%= index + 1 %></td>
+                <td><%= ecpm.id %></td>
+                <td><%= ecpm.transaction_count %></td>
+                <td><%= ecpm.select_ecpm_value %></td>
+                <td><%= ecpm.transaction_count * ecpm.select_ecpm_value %>  </td>
+                <td><%= Transaction::CATEGORY_REVERSE[ecpm.transaction_category.to_i] %></td>
+                <td><%= ecpm.transaction_date %></td>
+                <td><%= ecpm.ecpm_value %></td>
+                <td><%= ecpm.ecpm_min %></td>
+                <td><%= ecpm.ecpm_max %></td>
+                <td><%= ecpm.created_at.strftime("%b %d, %Y") %></td>
+              </tr>
+          <tr><td colspan="10"></td><td><%= link_to 'Delete', admin_delete_ecpm_path(ecpm), method: :delete, class: 'btn btn-danger', data: {confirm: "Do you want delete it"} %></td></tr>
+          <% end %>
+          </tbody>
+        </table>
+        <div class="client-pagination-setting">
+          <div class="post-text">
+            <%= will_paginate(@ecpms) %>
+          </div>
+        </div>
+
+    <% else %>
+        No record available
+    <% end %>
+<% end %>
+<%= render 'partials/basic_content' %>

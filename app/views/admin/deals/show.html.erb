@@ -1,0 +1,43 @@
+<%
+  @heading = 'Deal Detail'
+  @sub_heading = @deal.name.titleize
+  @link_only = raw "#{link_to 'Edit', admin_edit_deal_path(@deal), class: 'btn btn-warning', style: 'float: right'}, #{link_to 'Delete', admin_deal_path(@deal), class: 'btn btn-danger', style: 'float: right', method: :delete, data: { confirm: 'Are you sure?' }}}"
+  content_for :content do %>
+  <% if !@deal.blank? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Company ID</th>
+        <th>Downloaded</th>
+        <th>Link</th>
+        <th>Logo</th>
+        <th>Name</th>
+        <th>Instructions</th>
+        <th>Active</th>
+        <th>Amount</th>
+        <th>Cap</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td><%= @deal.id %></td>
+        <td><%= @deal.company_id %></td>
+        <td><%= @deal.downloaded %></td>
+        <td><%= @deal.link %></td>
+        <td><%= image_tag @deal.logo, height: 100, width: 100 %></td>
+        <td><%= @deal.name %></td>
+        <td><%= @deal.instructions %></td>
+        <td><%= @deal.active %></td>
+        <td><%= @deal.amount %></td>
+        <td><%= @deal.cap %></td>
+      </tr>
+
+      </tbody>
+    </table>
+  <% else %>
+    No data available
+  <% end %>
+
+<% end %>
+<%= render 'partials/basic_content' %>

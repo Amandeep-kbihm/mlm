@@ -1,0 +1,55 @@
+<%
+  @heading = 'Change Password'
+  @sub_heading = 'All Users Detail'
+  content_for :content do %>
+    <% if ! @users.blank? %>
+        <table class="table">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Mobile No</th>
+            <th>Refer ID</th>
+            <th>Real Sponsor ID</th>
+            <th>Action</th>
+          </tr>
+          </thead>
+          <tbody>
+          <% @users.each do |users| %>
+              <tr>
+                <td><%= users.id %></td>
+                <td><%= users.name.titleize %></td>
+                <td><%= users.email %></td>
+                <td><%= users.mobile_number %></td>
+                <td><%= users.refer_id %></td>
+                <td><%= users.real_sponsor_id %></td>
+                <td>
+                  <% if users.has_role?('admin')  %>
+                      Super Admin
+                  <% else %>
+                      <%= link_to 'Show', admin_show_user_path(users), class: 'btn btn-info' %>
+                      <%= link_to 'Delete', admin_user_delete_path(users), data: {confirm: 'Do you want delete it'}, method: :delete, class: 'btn btn-danger' %>
+                      <% if users.status == true %>
+                          <%= link_to 'Block', admin_change_user_status_path(users), data: {confirm: 'Do you want Block user'}, method: :patch, class: 'btn btn-warning' %>
+                      <% elsif users.status == false %>
+                          <%= link_to 'Activate', admin_change_user_status_path(users), data: {confirm: 'Do you want Block user'}, method: :patch, class: 'btn btn-warning' %>
+                      <% end %>
+                      <%= link_to 'Change Password', admin_password_form_path(users), class: 'btn btn-primary' %>
+                  <% end %>
+                </td>
+              </tr>
+          <% end %>
+          </tbody>
+        </table>
+        <div class="client-pagination-setting">
+          <div class="post-text">
+            <%= will_paginate(@users) %>
+          </div>
+        </div>
+
+    <% else %>
+        No users available
+    <% end %>
+<% end %>
+<%= render 'partials/basic_content' %>

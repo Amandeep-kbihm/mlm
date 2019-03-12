@@ -1,0 +1,27 @@
+# == Schema Information
+#
+# Table name: limits
+#
+#  id         :integer          not null, primary key
+#  user_id    :integer
+#  ppc        :integer          default(0)
+#  ppv        :integer          default(0)
+#  ppv2       :integer          default(0)
+#  ppi        :integer          default(0)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  user: one
+  ppc: 1
+  ppv: 1
+  ppi: 1
+
+two:
+  user: two
+  ppc: 1
+  ppv: 1
+  ppi: 1

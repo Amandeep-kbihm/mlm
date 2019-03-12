@@ -1,0 +1,73 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>ECPM</h3>
+      </div>
+
+    </div>
+
+    <div class="clearfix"></div>
+    <%= link_to 'Back', admin_transaction_status_path(category:params[:category], status: params[:status]), class: 'btn btn-info pull-right' %>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+
+            <h2> Transaction Category - <%= Transaction::CATEGORY_REVERSE[params[:id].to_i] %></h2>
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <%= form_for [:admin, @ecpm], url:admin_ecpm_record_create_path do |f|  %>
+                <div class="col-md-10 col-md-offset-2  col-xs-12">
+                  <div class="row">
+                    <div class="col-md-12 col-xs-12 mt10">
+                      <%= f.hidden_field :transaction_date, value: params[:date], class: 'form-control', required: true %>
+                      <%= f.hidden_field :transaction_category, value: params[:category], class: 'form-control', required: true %>
+                      <%= f.hidden_field :transaction_count, value: params[:count], class: 'form-control', required: true %>
+                      <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                          <h4>ECPM</h4>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <%= f.text_field :ecpm_value, class: 'form-control', required: true %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 mt10">
+                      <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                          <h4>ECPM Minimum</h4>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <%= f.text_field :ecpm_min,  class: 'form-control', required: true %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 mt10">
+                      <div class="row">
+                        <div class="col-md-3 col-xs-12">
+                          <h4>ECPM Maximum</h4>
+                        </div>
+                        <div class="col-md-6 col-xs-12">
+                          <%= f.text_field :ecpm_max,  class: 'form-control', required: true %>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div class="col-md-12 col-xs-12 mt10 text-center">
+                      <%= f.submit "Submit", class: 'btn btn-primary' %>
+                    </div>
+
+                  </div>
+                </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

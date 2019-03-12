@@ -1,0 +1,66 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3>Transaction Records - <%= Transaction::CATEGORY_REVERSE[params[:category].to_i] %></h3>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <%= link_to 'Back', admin_transaction_status_path(category:params[:category], status: params[:status]), class: 'btn btn-info pull-right' %>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+
+            <h2> <%= Transaction::CATEGORY_REVERSE[params[:category].to_i] %> - <%= Transaction::STATUS_REVERSE[params[:status].to_i] %></h2>
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <% if ! @results.blank? %>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>S.no</th>
+                    <th>Transaction ID</th>
+                    <th>Category</th>
+                    <th>Status</th>
+                    <th>User ID</th>
+                    <th>Wallet ID</th>
+                    <th>Transaction_type</th>
+                    <th>Mobile No</th>
+                    <th>Created at</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @results.each_with_index do |transaction, index| %>
+                      <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= transaction.id %></td>
+                        <td><%= Transaction::CATEGORY_REVERSE[transaction.category.to_i] %></td>
+                        <td><%= Transaction::STATUS_REVERSE[transaction.status.to_i] %></td>
+                        <td><%= transaction.user_id %></td>
+                        <td><%= transaction.wallet_id %></td>
+                        <td><%= Transaction::TRANSACTION_TYPE_REVERSE[transaction.transaction_type.to_i]%></td>
+                        <td><%= transaction.user.mobile_number %></td>
+                        <td><%= transaction.created_at.strftime("%b %d, %Y") %></td>
+                      </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+                <div class="client-pagination-setting">
+                  <div class="post-text">
+                    <%= will_paginate(@results) %>
+                  </div>
+                </div>
+
+            <% else %>
+                No transaction available
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

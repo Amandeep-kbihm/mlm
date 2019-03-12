@@ -1,0 +1,50 @@
+<%
+  @heading = 'Setting'
+  @sub_heading = 'Setting Values'
+  content_for :content do %>
+    <% if ! @settings.blank? %>
+        <%= form_for 'settings', url: admin_update_setting_path  do |f| %>
+            <table class="table">
+              <thead>
+              <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Value</th>
+              </tr>
+              </thead>
+              <tbody>
+              <% @settings.each_with_index do |setting, index| %>
+                  <tr>
+                    <td><%= index + 1  %></td>
+                    <td>
+                      <%= t setting.name %>
+                    </td>
+                    <td>
+                      <%= f.hidden_field 'array[][key]', value: setting.id %>
+                      <% if setting.kind == Setting::SETTING_KIND[:integer] %>
+                          <%= f.number_field 'array[][value]', value: setting.value, class: 'form-control', autocomplete: 'off', min: 0 %>
+                      <% elsif setting.kind == Setting::SETTING_KIND[:float]  %>
+                          <%= f.number_field 'array[][value]', value: setting.value, class: 'form-control', autocomplete: 'off', step: 0.01, min: 0 %>
+                      <% elsif setting.kind === Setting::SETTING_KIND[:bool] %>
+                          <%= f.check_box_tag 'settings[array[][value]]', '1', ActiveModel::Type::Boolean.new.cast(setting.value), { class: 'form-control' }  %>
+                      <% else %>
+                          <%= f.text_field 'array[][value]', value: setting.value, class: 'form-control', autocomplete: 'off' %>
+                      <% end %>
+                    </td>
+                  </tr>
+              <% end %>
+              </tbody>
+            </table>
+            <%= f.submit 'Save', class: 'btn btn-info' %>
+        <% end %>
+        <div class="client-pagination-setting">
+          <div class="post-text">
+
+          </div>
+        </div>
+
+    <% else %>
+        No users available
+    <% end %>
+<% end %>
+<%= render 'partials/basic_content' %>

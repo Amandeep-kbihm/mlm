@@ -1,0 +1,131 @@
+<div class="col-md-3 left_col">
+  <div class="left_col scroll-view">
+
+    <div class="navbar nav_title" style="border: 0;">
+      <a href="/" class="site_title">Dashboard</a>
+    </div>
+
+    <div class="profile"><!--img_2 -->
+      <div class="profile_pic">
+        <%= image_tag('admin.png', width: 50, height: 50) %>
+      </div>
+      <div class="profile_info">
+        <span>Welcome,</span>
+        <h2></h2>
+      </div>
+    </div>
+
+    <br>
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+
+      <div class="menu_section">
+        <h3>Navigation</h3>
+        <ul class="nav side-menu">
+        <li>
+            <a href="<%= admin_conversions_path %>"><i class="fa fa-bar-chart-o"></i> Conversion </a>
+          </li>
+          <li>
+            <a href="<%= admin_enquiries_path %>"><i class="fa fa-bar-chart-o"></i> Queries </a>
+          </li>
+          <li>
+            <a><i class="fa fa-user"></i> Users <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><%= link_to 'All', admin_user_details_path  %></li>
+            </ul>
+          </li>
+          <li>
+            <%= link_to admin_new_notification_path do %>
+            <i class="fa fa-flag-o"></i> Notifications
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_deals_path do %>
+            <i class="fa fa-credit-card"></i> Deals
+            <% end %>
+          </li>
+          <li>
+            <%= link_to admin_offers_path do %>
+              <i class="fa fa-credit-card"></i> Offers
+            <% end %>
+          </li>
+          <% if params[:check].to_i == 1 || params[:check].to_i == 2 || params[:check].to_i == 3 %>
+              <% @active1 = 'active' %>
+              <% @block = 'display:block' %>
+          <% elsif params[:check].to_i == 4 || params[:check].to_i == 5 || params[:check].to_i == 6 %>
+              <% @active2 = 'active' %>
+              <% @block2 = 'display:block' %>
+          <% elsif params[:check].to_i == 7 || params[:check].to_i == 8 || params[:check].to_i == 9 %>
+              <% @active3 = 'active' %>
+              <% @block3 = 'display:block' %>
+          <% elsif params[:check].to_i == 10 || params[:check].to_i == 11 || params[:check].to_i == 12 %>
+              <% @active4 = 'active' %>
+              <% @block4 = 'display:block' %>
+          <% end %>
+
+          <li class="<%= @active1 %>"><a><i class="fa fa-stop-circle-o"></i>Transaction Pending <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="<%= @block %>">
+              <li><%= link_to 'PPC Pending Request', admin_transaction_status_path(category:3, status: 2, check:1) %></li>
+              <li><%= link_to 'PPV Pending Request', admin_transaction_status_path(category:2, status: 2, check:2)  %></li>
+              <li><%= link_to 'PPI Pending Request', admin_transaction_status_path(category:1, status: 2, check:3)  %></li>
+            </ul>
+          </li>
+
+
+          <li class="<%= @active2 %>"><a> <i class="fa fa-check-circle-o"></i>Transaction Approved <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="<%= @block2 %>">
+              <li><%= link_to 'PPC Approved', admin_transaction_status_path(category:3, status: 0, check:4) %></li>
+              <li><%= link_to 'PPV Approved', admin_transaction_status_path(category:2, status: 0, check:5)  %></li>
+              <li><%= link_to 'PPI Approved', admin_transaction_status_path(category:1, status: 0, check:6)  %></li>
+            </ul>
+          </li>
+          <li><a> <i class="fa fa-university" aria-hidden="true"></i>
+            ECPM Records <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu">
+              <li><%= link_to 'ECPM Records', admin_ecpm_records_path %></li>
+            </ul>
+          </li>
+
+          <li  class="<%= @active3 %>"><a> <i class="fa fa-stop-circle" aria-hidden="true"></i> Payment Pending <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="<%= @block3 %>">
+
+              <li><%= link_to 'Paytm Request', admin_payment_transaction_path(type:0, status:2, check:7) %></li>
+              <li><%= link_to 'Bank Transactions Request', admin_payment_transaction_path(type:1, status:2, check:8)  %></li>
+              <li ><%= link_to 'Recharge Request', admin_payment_transaction_path(type:2, status:2, check:9)  %></li>
+            </ul>
+          </li>
+          <li class="<%= @active4 %>"><a> <i class="fa fa-check-circle" aria-hidden="true"></i> Payment Approved <span class="fa fa-chevron-down"></span></a>
+            <ul class="nav child_menu" style="<%= @block4 %>">
+
+              <li  ><%= link_to 'Paytm Approved', admin_payment_transaction_path(type:0, status:0, check:10) %></li>
+              <li ><%= link_to 'Bank Transactions Approved', admin_payment_transaction_path(type:1, status:0, check:11)  %></li>
+              <li ><%= link_to 'Recharge Approved', admin_payment_transaction_path(type:2, status:0, check:12)  %></li>
+            </ul>
+          </li>
+          <li><%= link_to admin_setting_details_path do %>
+                <i class="fa fa-cog" aria-hidden="true"></i> Settings
+            <% end %>
+          </li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="sidebar-footer hidden-small">
+      <!--<a data-toggle="tooltip" data-placement="top" title="Settings">-->
+        <!--<span class="glyphicon glyphicon-cog" aria-hidden="true"></span>-->
+      <!--</a>-->
+      <!--<a data-toggle="tooltip" data-placement="top" title="FullScreen">-->
+        <!--<span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>-->
+      <!--</a>-->
+      <!--<a data-toggle="tooltip" data-placement="top" title="Lock">-->
+        <!--<span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>-->
+      <!--</a>-->
+      <%= link_to destroy_user_session_path, method: :delete, data: { toggle: 'tooltip', placement: 'top' }, title: 'Logout' do %>
+          <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+      <% end %>
+      <!--<a data-toggle="tooltip" data-placement="top" title="Logout">-->
+
+      <!--</a>-->
+    </div>
+  </div>
+</div>

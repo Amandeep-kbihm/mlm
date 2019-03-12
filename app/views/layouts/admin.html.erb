@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EEarn</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'admin', media: 'all' %>
+
+  <%= favicon_link_tag 'logo.png' %>
+</head>
+
+<body class="nav-md" data-controller="<%= controller_name %>" data-action="<%= action_name %>">
+<div class="container body">
+  <div class="main_container">
+    <%= flash_messages %>
+    <%= render template: 'partials/left_menu' %>
+    <%= render template: 'partials/top_nav' %>
+    <div data-pjax-container>
+      <%= yield %>
+    </div>
+    <footer>
+      <div class="pull-right">
+        All rights reserved Qwibzio.
+      </div>
+      <div class="clearfix"></div>
+    </footer>
+  </div>
+</div>
+<%= javascript_include_tag 'admin' %>
+</body>
+</html>

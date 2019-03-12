@@ -1,0 +1,49 @@
+<%
+  @heading = 'Deals'
+  @sub_heading = 'All Deals Detail'
+  @link_only = raw "#{link_to 'New Deal', admin_new_deal_path, class: 'btn btn-primary', style: 'float: right'}"
+  content_for :content do %>
+  <%=  %>
+  <% if !@deals.blank? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Company ID</th>
+        <th>Name</th>
+        <th>Logo</th>
+        <th>Status</th>
+        <th>Activity</th>
+        <th>Created At</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @deals.each do |deal| %>
+        <tr>
+          <td><%= deal.id %></td>
+          <td><%= deal.company_id %></td>
+          <td><%= deal.name %></td>
+          <td><%= image_tag deal.logo, height: 50, width: 50 %></td>
+          <td><%= deal.active %></td>
+          <td><%= "#{deal.cap}/#{deal.downloaded}" %></td>
+          <td><%= deal.created_at.strftime("%b %d, %Y") %></td>
+          <td>
+            <%= link_to 'Show', admin_deal_path(deal), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', admin_deal_path(deal), method: :delete, class: 'btn btn-danger', data: {confirm: "Do you want delete it"} %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="client-pagination-setting">
+      <div class="post-text">
+        <%= will_paginate(@deals) %>
+      </div>
+    </div>
+
+  <% else %>
+    <p>No record available</p>
+  <% end %>
+<% end %>
+<%= render 'partials/basic_content' %>

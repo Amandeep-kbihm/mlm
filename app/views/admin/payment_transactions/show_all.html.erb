@@ -1,0 +1,101 @@
+<div class="right_col" role="main">
+  <div class="">
+    <div class="page-title">
+      <div class="title_left">
+        <h3><%= PaymentTransaction::PAYMENT_TYPE_REVERSE[params[:type].to_i] %> Records</h3>
+      </div>
+    </div>
+
+    <div class="clearfix"></div>
+    <%= link_to 'Back', admin_payment_transaction_path(type:params[:type], status:params[:status]), class: 'btn btn-info pull-right' %>
+    <div class="row">
+      <div class="col-md-12 col-sm-12 col-xs-12">
+        <div class="x_panel">
+          <div class="x_title">
+
+            <h2> Payment Type of <%= PaymentTransaction::PAYMENT_TYPE_REVERSE[params[:type].to_i] %> - <%= PaymentTransaction::STATUS_REVERSE[params[:status].to_i] %></h2>
+
+            <div class="clearfix"></div>
+          </div>
+          <div class="x_content">
+            <% if ! @payment_transactions.blank? %>
+                <table class="table">
+                  <thead>
+                  <tr>
+                    <th>S.no</th>
+                    <th>Payment ID</th>
+                    <th>Name</th>
+                    <th>User ID</th>
+                    <th>Wallet ID</th>
+                    <th>Amount</th>
+                    <th>Mobile No</th>
+                    <% if params[:type].to_i == 2 %>
+                        <th>Operator</th>
+                    <% end %>
+                    <% if params[:type].to_i == 0 || params[:type].to_i == 1 %>
+                        <th>Pan No</th>
+                    <% end %>
+                    <% if params[:type].to_i == 1 %>
+                        <th>IFSC</th>
+                        <th>Bank Ac</th>
+                    <% end %>
+                    <th>State</th>
+                    <th>Created at</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% @payment_transactions.each_with_index do |payment, index| %>
+                      <tr>
+                        <td><%= index + 1 %></td>
+                        <td><%= payment.id %></td>
+                        <td><%= payment.user.name.titleize %></td>
+                        <td><%= payment.user_id %></td>
+                        <td><%= payment.wallet_id %></td>
+                        <td><%= payment.amount %></td>
+                        <td><%= payment.mobile_number %></td>
+                        <% if payment.payment_type.to_i == 2 %>
+                            <td><%= payment.operator %></td>
+                        <% end %>
+                        <% if payment.payment_type.to_i == 0 || payment.payment_type.to_i == 1 %>
+                            <td><%= payment.pan_number %></td>
+                        <% end%>
+                        <% if payment.payment_type.to_i == 1 %>
+                            <td><%= payment.ifsc %></td>
+                            <td><%= payment.bank_account %></td>
+                        <% end %>
+                        <% if payment.payment_type.to_i == 1 %>
+                            <td><%= payment.state %></td>
+                        <% else %>
+                            <td><%= payment.user.state %></td>
+                        <% end %>
+                        <td><%= payment.created_at.strftime("%b %d, %Y") %></td>
+                      </tr>
+                      <% if payment.status == 2 %>
+                          <tr>
+                            <% if payment.payment_type.to_i == 1 %>
+                                <td colspan="10"></td>
+                            <% else %>
+                                <td colspan="8"></td>
+                            <% end %>
+                            <td><%= link_to 'Decline', admin_decline_payment_transaction_path(payment), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %></td>
+                            <td colspan="1"><%= link_to 'Approve', admin_approved_payment_transaction_path(payment), method: :patch, data:{confirm: 'Do you want approved this transaction'}, class: 'btn btn-primary' %></td>
+                          </tr>
+                      <% end %>
+                  <% end %>
+                  </tbody>
+                </table>
+                <div class="client-pagination-setting">
+                  <div class="post-text">
+                    <%= will_paginate(@payment_transactions) %>
+                  </div>
+                </div>
+
+            <% else %>
+                No transaction available
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

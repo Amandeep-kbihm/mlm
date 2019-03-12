@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>EEarn</title>
+    <%= csrf_meta_tags %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
+    <%= favicon_link_tag 'logo.png' %>
+  </head>
+
+  <body class="<%= controller_name %>">
+    <!-- Preloader starts-->
+    <div id="preloader"></div>
+    <!-- Preloader ends -->
+    <%= render 'common/top_bar' %>
+    <%= render 'common/menu' %>
+
+    <%= yield %>
+
+  </body>
+</html>

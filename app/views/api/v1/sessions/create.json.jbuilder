@@ -1,0 +1,19 @@
+json.status :success
+json.user do
+  json.id @user.id
+  json.email @user.email
+  json.name @user.name
+  json.sponsor_id @user.sponsor_id
+  json.refer_id @user.refer_id
+  json.chain_count @user.chain_count
+  json.address @user.address
+  json.city @user.city
+  json.state @user.state
+  json.country @user.country
+  json.dob @user.dob
+  json.mobile_number @user.mobile_number
+  json.real_sponsor @user.real_sponsor_id
+  json.user_level @user.user_level
+  json.user_status @user.status
+  json.auth_token @auth_token
+end

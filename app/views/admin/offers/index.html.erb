@@ -1,0 +1,50 @@
+<%
+  @heading = 'Offers'
+  @sub_heading = 'All Offers Detail'
+  @link_only = raw "#{link_to 'New Offer', admin_new_offer_path, class: 'btn btn-primary', style: 'float: right'}"
+  content_for :content do %>
+  <%=  %>
+  <% if !@offers.blank? %>
+    <table class="table">
+      <thead>
+      <tr>
+        <th>ID</th>
+        <th>Company ID</th>
+        <th>Name</th>
+        <th>Logo</th>
+        <th>Status</th>
+        <th>Activity</th>
+        <th>Created At</th>
+        <th></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% @offers.each do |offer| %>
+        <tr>
+          <td><%= offer.id %></td>
+          <td><%= offer.company_id %></td>
+          <td><%= offer.name %></td>
+          <td><%= image_tag offer.logo, height: 50, width: 50 %></td>
+          <td><%= offer.active %></td>
+          <td><%= "#{offer.cap}/#{offer.downloaded}" %></td>
+          <td><%= offer.created_at.strftime("%b %d, %Y") %></td>
+          <td>
+            <%= link_to 'Show', admin_offer_path(offer), class: 'btn btn-primary' %>
+            <%= link_to 'Delete', admin_offer_path(offer), method: :delete, class: 'btn btn-danger', data: {confirm: "Do you want delete it"} %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+    <div class="client-pagination-setting">
+      <div class="post-text">
+        <%= will_paginate(@offers) %>
+      </div>
+    </div>
+
+  <% else %>
+    <p>No record available</p>
+  <% end %>
+<% end %>
+<%= render 'partials/basic_content' %>
+

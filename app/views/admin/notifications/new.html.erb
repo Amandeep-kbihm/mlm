@@ -1,0 +1,23 @@
+<%
+  @heading = 'Send Notification'
+  content_for :content do
+%>
+    <%= form_for @notification, url: admin_notifications_path, html: { class: 'form-horizontal form-label-left' } do |f| %>
+        <div class="form-group">
+          <label for="user_name" class="control-label col-md-3 col-sm-3 col-xs-12">Body</label>
+          <div class="col-md-6 col-xs-12">
+            <%= f.text_field :body, class: 'form-control' %>
+          </div>
+        </div>
+
+        <div class="ln_solid"></div>
+
+        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+          <button class="btn btn-primary">Send</button>
+        </div>
+    <% end %>
+<%
+  end
+%>
+
+<%= render 'partials/basic_content' %>

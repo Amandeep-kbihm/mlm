@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>EEarn</title>
+  <%= csrf_meta_tags %>
+
+  <%= stylesheet_link_tag 'admin', media: 'all' %>
+
+  <%= favicon_link_tag 'logo.png' %>
+</head>
+
+<body style="background:#F7F7F7;" class="<%= controller_name %>">
+<div class="edit-login">
+  <a class="hiddenanchor" id="toregister"></a>
+  <a class="hiddenanchor" id="tologin"></a>
+
+  <div id="wrapper">
+    <div id="login" class=" form">
+      <section class="login_content">
+        <%= yield %>
+      </section>
+    </div>
+  </div>
+</div>
+</body>
+</html>

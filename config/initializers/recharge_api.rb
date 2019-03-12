@@ -1,0 +1,1 @@
+require 'pay2_all'

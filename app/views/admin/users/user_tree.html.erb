@@ -1,0 +1,48 @@
+<%
+  @heading = 'Tree Detail'
+  @link_only = link_to 'Back', admin_user_details_path, class: 'btn btn-info', style: 'float: right'
+  @sub_heading = @user.name.titleize
+  content_for :content do %>
+    <div class="row">
+      <div class="col-md-3">
+        <%= link_to "Direct Refers (#{@direct_count})", admin_users_tree_level_path(id: @user, level: 'direct'), class: 'btn btn-warning btn-block' %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3">
+        <%= link_to "Level 1 (#{@levels_count[0]})", admin_users_tree_level_path(id: @user, level: 1), class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Level 2 (#{@levels_count[1]})", admin_users_tree_level_path(id: @user, level: 2), class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Level 3 (#{@levels_count[2]})", admin_users_tree_level_path(id: @user, level: 3), class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Level 4 (#{@levels_count[3]})", admin_users_tree_level_path(id: @user, level: 4), class: 'btn btn-primary btn-block' %>
+      </div>
+
+      <div class="col-md-3">
+        <%= link_to "Level 5 (#{@levels_count[4]})", admin_users_tree_level_path(id: @user, level: 5), class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Level 6 (#{@levels_count[5]})", admin_users_tree_level_path(id: @user, level: 6), class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Level 7 (#{@levels_count[6]})", admin_users_tree_level_path(id: @user, level: 7), class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Level 8 (#{@levels_count[7]})", admin_users_tree_level_path(id: @user, level: 8), class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-md-offset-3">
+        <%= link_to "Level 9 (#{@levels_count[8]})", admin_users_tree_level_path(id: @user, level: 9), class: 'btn btn-primary btn-block' %>
+      </div>
+      <div class="col-md-3">
+        <%= link_to "Level 10 (#{@levels_count[9]})", admin_users_tree_level_path(id: @user, level: 10), class: 'btn btn-primary btn-block' %>
+      </div>
+    </div>
+<% end %>
+<%= render 'partials/basic_content' %>
